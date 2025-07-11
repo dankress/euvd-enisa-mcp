@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export const server = new McpServer({
   name: "euvd-enisa-mcp",
-  version: "1.0.4"
+  version: "1.0.6"
 });
 
 export const euvdApi = axios.create({
@@ -13,7 +13,9 @@ export const euvdApi = axios.create({
 
 server.tool(
   "get_last_vulnerabilities",
-  {},
+  {
+    description: "Retrieves the latest vulnerabilities"
+  },
   async () => {
     try {
       const response = await euvdApi.get('/lastvulnerabilities');
@@ -46,7 +48,9 @@ server.tool(
 
 server.tool(
   "get_exploited_vulnerabilities",
-  {},
+  {
+    description: "Retrieves vulnerabilities that are being actively exploited"
+  },
   async () => {
     try {
       const response = await euvdApi.get('/exploitedvulnerabilities');
@@ -79,7 +83,9 @@ server.tool(
 
 server.tool(
   "get_critical_vulnerabilities",
-  {},
+  {
+    description: "Retrieves vulnerabilities with critical severity"
+  },
   async () => {
     try {
       const response = await euvdApi.get('/criticalvulnerabilities');
@@ -113,6 +119,7 @@ server.tool(
 server.tool(
   "search_vulnerabilities",
   {
+    description: "Searches for vulnerabilities based on various criteria",
     fromScore: z.number().min(0).max(10).optional(),
     toScore: z.number().min(0).max(10).optional(),
     fromEpss: z.number().min(0).max(100).optional(),
@@ -160,6 +167,7 @@ server.tool(
 server.tool(
   "get_euvd_by_id",
   {
+    description: "Gets detailed information about a vulnerability by its EUVD ID",
     id: z.string(),
   },
   async ({ id }) => {
@@ -195,6 +203,7 @@ server.tool(
 server.tool(
   "get_advisory_by_id",
   {
+    description: "Gets an advisory by its ID",
     id: z.string(),
   },
   async ({ id }) => {

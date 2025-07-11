@@ -178,7 +178,7 @@ describe("euvd-enisa-mcp", () => {
       const MockedMcpServer = vi.mocked(server.constructor);
       expect(MockedMcpServer).toHaveBeenCalledWith({
         name: "euvd-enisa-mcp",
-        version: "1.0.4"
+        version: "1.0.6"
       });
     })
 
@@ -200,17 +200,20 @@ describe("euvd-enisa-mcp", () => {
     it("should have proper tool configurations", () => {
       const toolCalls = vi.mocked(server.tool).mock.calls;
       
-      // Check that tools without parameters have empty schema
+      // Check that tools without parameters have only description in schema
       const simpleTools = ["get_last_vulnerabilities", "get_exploited_vulnerabilities", "get_critical_vulnerabilities"];
       simpleTools.forEach(toolName => {
         const toolCall = toolCalls.find(call => call[0] === toolName);
         expect(toolCall).toBeDefined();
-        expect(toolCall![1]).toEqual({}); // Empty schema
+        expect(toolCall![1]).toHaveProperty('description');
+        // Check that there are no other properties besides description
+        expect(Object.keys(toolCall![1]).length).toBe(1);
       });
 
       // Check that search_vulnerabilities has proper schema
       const searchToolCall = toolCalls.find(call => call[0] === "search_vulnerabilities");
       expect(searchToolCall).toBeDefined();
+      expect(searchToolCall![1]).toHaveProperty('description');
       expect(searchToolCall![1]).toHaveProperty('fromScore');
       expect(searchToolCall![1]).toHaveProperty('toScore');
       expect(searchToolCall![1]).toHaveProperty('product');
@@ -220,6 +223,7 @@ describe("euvd-enisa-mcp", () => {
       idTools.forEach(toolName => {
         const toolCall = toolCalls.find(call => call[0] === toolName);
         expect(toolCall).toBeDefined();
+        expect(toolCall![1]).toHaveProperty('description');
         expect(toolCall![1]).toHaveProperty('id');
       });
     })
