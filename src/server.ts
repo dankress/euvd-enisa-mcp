@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export const server = new McpServer({
   name: "euvd-enisa-mcp",
-  version: "0.1.0"
+  version: "1.0.3"
 });
 
 export const euvdApi = axios.create({

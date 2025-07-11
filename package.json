@@ -1,13 +1,18 @@
 {
   "name": "euvd-enisa-mcp",
   "version": "1.0.3",
-  "main": "build/index.js",
+  "main": "build/src/index.js",
   "type": "module",
+  "bin": {
+    "euvd-enisa-mcp": "build/src/index.js"
+  },
   "files": [
     "build"
   ],
   "scripts": {
     "build": "tsc",
+    "start": "node build/src/index.js",
+    "dev": "tsc && node build/src/index.js",
     "lint": "eslint . --ext .ts",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -17,14 +22,21 @@
     "type": "git",
     "url": "git+https://github.com/dankress/euvd-enisa-mcp.git"
   },
-  "keywords": [],
+  "keywords": [
+    "mcp",
+    "modelcontextprotocol",
+    "euvd",
+    "enisa",
+    "vulnerability",
+    "security"
+  ],
   "author": "",
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/dankress/euvd-enisa-mcp/issues"
   },
   "homepage": "https://github.com/dankress/euvd-enisa-mcp#readme",
-  "description": "",
+  "description": "MCP server for accessing EUVD (European Vulnerability Database) and ENISA security data",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.15.0",
     "axios": "^1.10.0",
