@@ -1,6 +1,6 @@
 {
   "name": "euvd-enisa-mcp",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "build/index.js",
   "type": "module",
   "files": [
@@ -19,7 +19,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/dankress/euvd-enisa-mcp/issues"
   },
