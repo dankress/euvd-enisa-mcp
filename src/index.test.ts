@@ -178,7 +178,7 @@ describe("euvd-enisa-mcp", () => {
       const MockedMcpServer = vi.mocked(server.constructor);
       expect(MockedMcpServer).toHaveBeenCalledWith({
         name: "euvd-enisa-mcp",
-        version: "0.1.0"
+        version: "1.0.4"
       });
     })
 

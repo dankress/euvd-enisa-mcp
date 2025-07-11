@@ -1,6 +1,6 @@
 {
   "name": "euvd-enisa-mcp",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "build/src/index.js",
   "type": "module",
   "bin": {

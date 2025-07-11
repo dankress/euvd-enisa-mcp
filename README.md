@@ -97,7 +97,6 @@ const result = await mcpClient.useTool("euvd-enisa-mcp", "search_vulnerabilities
 });
 
 console.log(result);
-```
 
 For more detailed information about the API endpoints and response formats, refer to the [EUVD API documentation](https://euvdservices.enisa.europa.eu/api).
 
